@@ -75,7 +75,8 @@ const alunosComNotas = alunosObj.map( a=>{
     //Realizando um comparação entre o objeto ( a ) e o objeto nota, para determinar o id correto e retornar a nota pertencente ao aluno correto.
     const notaAluno = notasObj.find( n=> n.id === a.id );
     //Criando o obj que será retornado ao novo Array alunosComNota, utilizando os outros objs presentes no MAP, (a e notaAluno).
-    return {id:a.id,nome:a.nome,rm:a.rm,nota:notaAluno.nota};
+    // return {id:a.id,nome:a.nome,rm:a.rm,nota:notaAluno.nota};
+    return {...a,nota:notaAluno.nota};
 });
 
 console.log(alunosComNotas);
@@ -88,3 +89,47 @@ const somaDasNotas = alunosComNotas.reduce( (notasAcumuladas, aluno )=>{
 
 console.log(somaDasNotas);
 
+//Declaração um objeto padrão
+
+ const pessoa = {
+    nome:"Alexandre",
+    dtNasc:"12/01/1992",
+    genero:"m",
+    altura:"2.10",
+    peso:120,
+    getNome: function(){
+        return this.nome;
+    },
+    setNome:function(nome){
+        this.nome = nome;
+    }
+ };
+
+ console.log(pessoa.getNome());
+ pessoa.setNome("CLEBER");
+ console.log(pessoa.getNome());
+ 
+ console.log(pessoa["dtNasc"]);
+let gen = "genero"; 
+ console.log(pessoa[gen]);
+ gen = "peso"; 
+ console.log(pessoa[gen]);
+
+ const pessoa2 = {
+    nome:"Carlos",
+    dtNasc:"30/07/1972",
+    genero:"m",
+    altura:"1.80",
+    peso:90,
+    trabalhando:true,
+    getNome: function(){
+        return this.nome;
+    },
+    setNome:function(nome){
+        this.nome = nome;
+    }
+ };
+
+//Exemplo com operador SPREAD ...
+const pessoa3 = {...pessoa,...pessoa2};
+console.log(pessoa3);
